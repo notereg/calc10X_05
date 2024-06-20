@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -25,8 +26,13 @@ public class Main {
             int lastIndex = strs.length -1;
             //System.out.println("длинна массива равна " +lastIndex);
             if(lastIndex!=1){
+                try {
+                    throw new IOException();
+                } catch (IOException e) {
+                    System.out.println("Пример введен некорректно (ошибка при проверке арифметического знака)");
+                }
                 //System.out.print("не корректный пример. напишите 2 числа и одно из 4 арифметических действий указанных в условии");
-                return "Пример введен некорректно (ошибка при проверке арифметического знака)";
+                //return "Пример введен некорректно (ошибка при проверке арифметического знака)";
             } else{
                 //System.out.println("вы выбрали сложение");
                 try {
@@ -36,23 +42,33 @@ public class Main {
                         // Если первое число арабское и подходит по диапазону тогда проверям второе:
                         try {
                             int num2 = Integer.parseInt(strs[1].trim());
-                            if(num2 > 0 && num1 < 11) {
+                            if(num2 > 0 && num2 < 11) {
                                 int num3 = num1 + num2;//финальное действие арабскими
                                 //System.out.print("ответ сумма арабских чисел:" + num3);
                                 String snum3 = String.valueOf(num3);
                                 return "Ответ: " +  snum3;
                             } else {
+                                try {
+                                    throw new IOException();
+                                } catch (IOException e) {
+                                    System.out.println("Второе число не удовлетворяет условию диапазона");;
+                                }
                                 //System.out.println("второе число не пренедлежит заданному диапазону");
-                                return "Второе число не удовлетворяет условию диапазона";
+                                //return "Второе число не удовлетворяет условию диапазона";
                             }
 
                         } catch (NumberFormatException e) {
                             //System.out.println("второе число должно быть арабское как и первое");
-                            return "Второе число должно арабским если первое арабское";
+                            System.out.println("Второе число должно быть арабским если первое арабское");
                         }
                     } else {
+                        try {
+                            throw new IOException();
+                        } catch (IOException e) {
+                            System.out.println("Первое число не пренедлежит заданному диапазону");;
+                        }
                         //System.out.println("первое число не пренедлежит заданному диапазону");
-                        return "Первое число не пренедлежит заданному диапазону";
+                        //return "Первое число не пренедлежит заданному диапазону";
                     }
 
                 } catch (NumberFormatException e) {
@@ -117,15 +133,24 @@ public class Main {
                                 }
                             }
                             if(q2 == 10){
-                                return "Второе число введено не корректно";
+                                try {
+                                    throw new IOException();
+                                } catch (IOException ex) {
+                                    System.out.println("Второе число введено не корректно");
+                                }
                             }
 
                             break;
                         }
                     }
                     if(q1 == 10) {
+                        try {
+                            throw new IOException();
+                        } catch (IOException ex) {
+                            System.out.println("Первое число введено не корректно");
+                        }
                         //System.out.println("Первое число не соответствует формату");
-                        return "Первое число введено не корректно.";
+                        //return "Первое число введено не корректно.";
                     }
                 }
             }
@@ -134,8 +159,13 @@ public class Main {
             int lastIndex = strs.length -1;
             //System.out.println("длинна массива равна " +lastIndex);
             if(lastIndex!=1){
+                try {
+                    throw new IOException();
+                } catch (IOException ex) {
+                    System.out.println("Пример введен некорректно");
+                }
                 //System.out.print("не корректный пример. напишите 2 числа и одно из 4 арифметических действий указанных в условии");
-                return "Пример введен некорректно";
+                //return "Пример введен некорректно";
             } else{
                 //System.out.println("вы выбрали вычитание");
                 try {
@@ -151,17 +181,27 @@ public class Main {
                                 String snum3 = String.valueOf(num3);
                                 return "Ответ: " +  snum3;
                             } else {
+                                try {
+                                    throw new IOException();
+                                } catch (IOException ex) {
+                                    System.out.println("второе число не пренедлежит заданному диапазону");
+                                }
                                 //System.out.println("второе число не пренедлежит заданному диапазону");
-                                return "второе число не пренедлежит заданному диапазону";
+                                //return ;
                             }
 
                         } catch (NumberFormatException e) {
                             //System.out.println("второе число должно быть арабское как и первое");
-                            return "второе число должно быть арабское как и первое";
+                            System.out.println("второе число должно быть арабское как и первое");
                         }
                     } else {
+                        try {
+                            throw new IOException();
+                        } catch (IOException ex) {
+                            System.out.println("первое число не пренедлежит заданному диапазону");
+                        }
                         //System.out.println("первое число не пренедлежит заданному диапазону");
-                        return "первое число не пренедлежит заданному диапазону";
+                        //return ;
                     }
 
                 } catch (NumberFormatException e) {
@@ -197,7 +237,12 @@ public class Main {
                                     int val3 = val1 - val2; //предфинальное действие с римскими
                                     //System.out.println("результат: " +val3);
                                     if(val3 <1 ){
-                                        return "Ответ в римских числах не может быть меньше единицы";
+                                        try {
+                                            throw new IOException();
+                                        } catch (IOException ex) {
+                                            System.out.println("Ответ в римских числах не может быть меньше единицы");
+                                        }
+                                        //return ;
                                     }
                                     int input = val3;
 
@@ -228,14 +273,24 @@ public class Main {
                                 }
                             }
                             if(q2 == 10){
-                                return "второе число введено не корректно.";
+                                try {
+                                    throw new IOException();
+                                } catch (IOException ex) {
+                                    System.out.println("второе число введено не корректно");
+                                }
+                                //return ;
                             }
                             break;
                         }
                     }
                     if(q1 == 10) {
+                        try {
+                            throw new IOException();
+                        } catch (IOException ex) {
+                            System.out.println("первое число введено не корректно");
+                        }
                         //System.out.println("Первое число не соответствует формату");
-                        return "первое число введено не корректно.";
+                        //return ;
                     }
                 }
             }
@@ -244,8 +299,13 @@ public class Main {
             int lastIndex = strs.length -1;
             //System.out.println("длинна массива равна " +lastIndex);
             if(lastIndex!=1){
+                try {
+                    throw new IOException();
+                } catch (IOException ex) {
+                    System.out.println("не корректный пример");
+                }
                 //System.out.print("не корректный пример. напишите 2 числа и одно из 4 арифметических действий указанных в условии");
-                return "не корректный пример";
+                //return ;
             } else{
                 //System.out.println("вы выбрали деление");
                 try {
@@ -255,23 +315,33 @@ public class Main {
                         // Если первое число арабское и подходит по диапазону тогда проверям второе:
                         try {
                             int num2 = Integer.parseInt(strs[1].trim());
-                            if(num2 > 0 && num1 < 11) {
+                            if(num2 > 0 && num2 < 11) {
                                 int num3 = num1 / num2;//финальное действие арабскими
                                 //System.out.print("результат: " + num3);
                                 String snum3 = String.valueOf(num3);
                                 return "Ответ: " +  snum3;
                             } else {
+                                try {
+                                    throw new IOException();
+                                } catch (IOException ex) {
+                                    System.out.println("второе число не пренедлежит заданному диапазону");
+                                }
                                 //System.out.println("второе число не пренедлежит заданному диапазону");
-                                return "второе число не пренедлежит заданному диапазону";
+                                //return ;
                             }
 
                         } catch (NumberFormatException e) {
                             //System.out.println("второе число должно быть арабское как и первое");
-                            return "второе число должно быть арабское как и первое";
+                            System.out.println("второе число должно быть арабское как и первое");
                         }
                     } else {
+                        try {
+                            throw new IOException();
+                        } catch (IOException ex) {
+                            System.out.println("первое число не пренедлежит заданному диапазону");
+                        }
                         //System.out.println("первое число не пренедлежит заданному диапазону");
-                        return "первое число не пренедлежит заданному диапазону";
+                        //return ;
                     }
 
                 } catch (NumberFormatException e) {
@@ -304,6 +374,7 @@ public class Main {
                                     int val2 = y + 1;
                                     //System.out.println("второе число римское и оно равно: "+ val2);
                                     //если второе число тоже римсое тога производим арифметическое действие и переводим получившееся число в римское
+
                                     int val3 = val1 / val2; //предфинальное действие с римскими
                                     //System.out.println("результат: " +val3);
 
@@ -320,31 +391,49 @@ public class Main {
                                     int d;
                                     String strBuilder ="";
                                     // вычесляем римское число и составляем строку
-                                    for(int i = 0; i < 9; i++) { //начинаем цикл
-                                        while(input >= nums[i]) {
-                                            d = input/nums[i];
-                                            input = input % nums[i];
-                                            for(int p =0; p < d; p++) {
-                                                strBuilder = strBuilder + vals[i];
+                                    if (val3 > 0) {
+                                        for(int i = 0; i < 9; i++) { //начинаем цикл
+                                            while(input >= nums[i]) {
+                                                d = input/nums[i];
+                                                input = input % nums[i];
+                                                for(int p =0; p < d; p++) {
+                                                    strBuilder = strBuilder + vals[i];
+                                                }
+
                                             }
 
                                         }
-
+                                        //System.out.println("Ответ на римском: " + strBuilder);
+                                        return "Ответ: " + strBuilder;
+                                    } else {
+                                        try {
+                                            throw new IOException();
+                                        } catch (IOException ex) {
+                                            System.out.println("результат на римском не может быть нулем");
+                                        }
                                     }
-                                    //System.out.println("Ответ на римском: " + strBuilder);
-                                    return "Ответ: " + strBuilder;
                                 }
                             }
                             if(q2 == 10) {
-                                return "второе число введено не корректно";
+                                try {
+                                    throw new IOException();
+                                } catch (IOException ex) {
+                                    System.out.println("второе число введено не корректно");
+                                }
+                                //return ;
                             }
                             break;
                         }
 
                     }
                     if(q1 == 10) {
+                        try {
+                            throw new IOException();
+                        } catch (IOException ex) {
+                            System.out.println("первое число введено не корректно");
+                        }
                         //System.out.println("Первое число не соответствует формату");
-                        return "первое число введено не корректно";
+                        //return ;
                     }
                 }
             }
@@ -353,8 +442,13 @@ public class Main {
             int lastIndex = strs.length -1;
             //System.out.println("длинна массива равна " +lastIndex);
             if(lastIndex!=1){
+                try {
+                    throw new IOException();
+                } catch (IOException ex) {
+                    System.out.println("не корректный пример");
+                }
                 //System.out.print("не корректный пример. напишите 2 числа и одно из 4 арифметических действий указанных в условии");
-                return "не корректный пример";
+                //return ;
             } else{
                 //System.out.println("вы выбрали умножение");
                 try {
@@ -370,17 +464,32 @@ public class Main {
                                 String snum3 = String.valueOf(num3);
                                 return "Ответ: " +  snum3;
                             } else {
+                                try {
+                                    throw new IOException();
+                                } catch (IOException ex) {
+                                    System.out.println("второе число не пренедлежит заданному диапазону");
+                                }
                                 //System.out.println("второе число не пренедлежит заданному диапазону");
-                                return "второе число не пренедлежит заданному диапазону";
+                                //return ;
                             }
 
                         } catch (NumberFormatException e) {
+                            try {
+                                throw new IOException();
+                            } catch (IOException ex) {
+                                System.out.println("второе число должно быть арабское как и первое");
+                            }
                             //System.out.println("второе число должно быть арабское как и первое");
-                            return "второе число должно быть арабское как и первое";
+                            //return ;
                         }
                     } else {
+                        try {
+                            throw new IOException();
+                        } catch (IOException ex) {
+                            System.out.println("первое число не пренедлежит заданному диапазону");
+                        }
                         //System.out.println("первое число не пренедлежит заданному диапазону");
-                        return "первое число не пренедлежит заданному диапазону";
+                        //return ;
                     }
 
                 } catch (NumberFormatException e) {
@@ -445,7 +554,12 @@ public class Main {
                                 }
                             }
                             if(q2 == 10) {
-                                return "второе число введено не корректно.";
+                                try {
+                                    throw new IOException();
+                                } catch (IOException ex) {
+                                    System.out.println("второе число введено не корректно");
+                                }
+                                //return ;
                             }
 
                             break;
@@ -453,14 +567,24 @@ public class Main {
 
                     }
                     if(q1 == 10) {
-                        return "первое число введено не корректно.";
+                        try {
+                            throw new IOException();
+                        } catch (IOException ex) {
+                            System.out.println("первое число введено не корректно");
+                        }
+                        //return ;
                     }
                 }
             }
         } else {
+            try {
+                throw new IOException();
+            } catch (IOException ex) {
+                System.out.println("не обнаружен арифметический знак");
+            }
             //System.out.println("не обнаружен арифметический знак");
-            return "не обнаружен арифметический знак";
+            //return ;
         }
-        return "что то пошло не так";
+        return "";
     }
 }
